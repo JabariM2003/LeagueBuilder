@@ -1,0 +1,88 @@
+﻿@model IEnumerable<TheFinalreset.Models.Entities.Item>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttackDamage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttackSpeed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CriticalStrikeChance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LifeSteal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArmorPenetration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lethality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttackDamage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttackSpeed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CriticalStrikeChance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LifeSteal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArmorPenetration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lethality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,126 @@
+﻿@model TheFinalreset.Models.Entities.Champion
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Champion</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Difficulty)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Difficulty)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="AddItem" asp-controller="Item" asp-route-id="@Model!.Id">Add Item</a> |
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<h3>Added Items</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Decription
+            </th>
+            <th>
+                Attack Damage
+            </th>
+            <th>
+                Attack Speed
+            </th>
+            <th>
+                Critical Strike 
+            </th>
+            <th>
+                Life Steal
+            </th>
+            <th>
+                Armor Penetration
+            </th>
+            <th>
+                Lethality
+            </th>
+            <th>
+                Cost
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model.ChampionBuilds)
+            {
+                <tr>
+                    <td>
+                        @item.Item!.Name
+                    </td>
+                    <td>
+                        @item.Item!.Description
+                    </td>
+                    <td>
+                        @item.Item!.AttackDamage
+                    </td>
+                    <td>
+                        @item.Item!.AttackSpeed
+                    </td>
+                    <td>
+                        @item.Item!.CriticalStrikeChance
+                    </td>
+                    <td>
+                        @item.Item!.LifeSteal
+                    </td>
+                    <td>
+                        @item.Item!.ArmorPenetration
+                    </td>
+                    <td>
+                        @item.Item!.Lethality
+                    </td>
+                    <td>
+                        @item.Item!.Cost
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Description
+                    </td>
+                    <td>
+                        <a asp-action="additem" asp-controller="Build" asp-route-id="@Model!.Id" asp-route-courseId="@item.ItemId">Assign Item</a> |
+                        <a asp-action="remove" asp-controller="Build" asp-route-id="@Model!.Id" asp-route-courseId="@item.ItemId">Remove Item</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

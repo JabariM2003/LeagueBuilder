@@ -1,0 +1,18 @@
+﻿@model TheFinalreset.Models.ViewModels.BuildVM
+
+<h3>
+    Are you sure you want to add @Model!.Item!.Name to @Model!.Champion!.Name?
+</h3>
+
+
+<form asp-action="Create" id="formCreateBuild">
+    <input type="hidden" name="championId" value="@Model.Champion.Id" />
+    <input type="hidden" name="itemId" value="@Model.Item.Id" />
+    <input type="submit" value="Add Item"/> |
+    <a asp-action="AddItem" asp-controller="Item"
+       asp-route-id="@Model!.Champion!.Id">Don't Add</a>
+</form>
+
+@section Scripts{
+    @*<script defer type="module" src="~/js/build.js"></script>*@
+}

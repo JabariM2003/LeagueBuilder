@@ -1,0 +1,95 @@
+﻿@using TheFinalreset.Models.Entities
+@model IEnumerable<TheFinalreset.Models.Entities.Item>
+
+@{
+    var champion = (Champion?)ViewData["Champion"];
+    ViewData["Title"] = $"Add item for {champion!.Name}";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttackDamage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttackSpeed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CriticalStrikeChance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LifeSteal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArmorPenetration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lethality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AttackDamage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AttackSpeed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CriticalStrikeChance)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LifeSteal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArmorPenetration)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lethality)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cost)
+                    </td>
+                    <td>
+                        <a asp-action="create" asp-controller="Build"
+                            asp-route-id="@champion!.Id" 
+                            asp-route-courseId="@item.Id">Add Item</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Details" asp-controller="Champion" asp-route-id="@champion.Id">Back to Champion Details</a>
+</div>
